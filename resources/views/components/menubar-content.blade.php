@@ -1,0 +1,15 @@
+<div
+  x-show="openMenu"
+  x-transition:enter="transition duration-100 ease-out"
+  x-transition:enter-start="opacity-0 scale-95"
+  x-transition:enter-end="opacity-100 scale-100"
+  x-transition:leave="transition duration-100 ease-in"
+  x-transition:leave-start="opacity-100 scale-100"
+  x-transition:leave-end="opacity-0 scale-95"
+  @click.away="closeMenubar()"
+  {{ $attributes->class([
+      'absolute z-50 min-w-[12rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md mt-2',
+  ]) }}
+>
+  {{ $slot }}
+</div>
