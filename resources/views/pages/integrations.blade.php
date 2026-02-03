@@ -8,6 +8,24 @@
   .text-gradient { background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary))); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
   .btn-outline { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 1rem 2rem; border: 2px solid hsl(var(--foreground)); color: hsl(var(--foreground)); border-radius: 9999px; font-weight: 600; text-decoration: none; transition: all 0.3s ease; background: transparent; cursor: pointer; }
   .btn-outline:hover { background-color: hsl(var(--foreground)); color: hsl(var(--background)); }
+  
+  .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+  }
+  
+  .integration-accordion.active .accordion-content {
+    max-height: 500px;
+  }
+  
+  .accordion-icon {
+    transition: transform 0.3s ease;
+  }
+  
+  .integration-accordion.active .accordion-icon {
+    transform: rotate(180deg);
+  }
 </style>
 @endpush
 
@@ -192,17 +210,17 @@
       <x-scroll-animate animation="fade-up">
         <div class="max-w-5xl mx-auto space-y-4">
           @foreach($integrationCategories as $idx => $cat)
-            <div class="integration-accordion rounded-2xl bg-gradient-to-br from-muted/50 to-muted/20 border border-border/30 overflow-hidden" data-index="{{ $idx }}">
-              <button class="accordion-trigger w-full py-6 px-8 text-left hover:bg-muted/30 transition-colors flex items-start justify-between">
+            <div class="integration-accordion rounded-2xl bg-gradient-to-br from-muted/50 to-muted/20 border border-border/30 overflow-hidden {{ $idx === 0 ? 'active' : '' }}" data-index="{{ $idx }}" onclick="toggleIntegrationAccordion(this)">
+              <button class="accordion-trigger w-full py-6 px-8 text-left hover:bg-muted/30 transition-colors flex items-start justify-between cursor-pointer">
                 <div>
                   <h3 class="text-2xl font-display text-foreground">{{ $cat['title'] }}</h3>
                   <p class="text-muted-foreground text-sm mt-1">{{ $cat['description'] }}</p>
                 </div>
-                <svg class="accordion-icon w-6 h-6 text-primary flex-shrink-0 ml-4 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="accordion-icon w-6 h-6 text-primary flex-shrink-0 ml-4 {{ $idx === 0 ? 'rotate-180' : '' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
                 </svg>
               </button>
-              <div class="accordion-content hidden overflow-hidden transition-all duration-300">
+              <div class="accordion-content {{ $idx === 0 ? '' : '' }}">
                 <div class="pb-8 px-8 pt-4 flex flex-wrap gap-3">
                   @foreach($cat['tools'] as $tool)
                     <span class="px-4 py-2 rounded-full bg-background border border-border/50 text-sm text-foreground hover:border-primary/30 hover:bg-primary/5 transition-colors cursor-pointer">
@@ -252,43 +270,38 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const accordions = document.querySelectorAll('.integration-accordion');
-    
-    accordions.forEach((accordion, idx) => {
-      const trigger = accordion.querySelector('.accordion-trigger');
-      const content = accordion.querySelector('.accordion-content');
-      const icon = accordion.querySelector('.accordion-icon');
-      
-      // Open first by default
-      if (idx === 0) {
-        content.classList.remove('hidden');
-        content.style.maxHeight = content.scrollHeight + 'px';
-        icon.style.transform = 'rotate(180deg)';
-      }
-      
-      trigger.addEventListener('click', function() {
-        const isOpen = !content.classList.contains('hidden');
-        
-        // Close all others
-        accordions.forEach(acc => {
-          if (acc !== accordion) {
-            acc.querySelector('.accordion-content').classList.add('hidden');
-            acc.querySelector('.accordion-content').style.maxHeight = '0px';
-            acc.querySelector('.accordion-icon').style.transform = 'rotate(0deg)';
-          }
-        });
-        
-        if (isOpen) {
-          content.classList.add('hidden');
-          content.style.maxHeight = '0px';
-          icon.style.transform = 'rotate(0deg)';
-        } else {
-          content.classList.remove('hidden');
-          content.style.maxHeight = content.scrollHeight + 'px';
-          icon.style.transform = 'rotate(180deg)';
+    // Scroll animation observer
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
         }
       });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-animate').forEach(element => {
+      observer.observe(element);
     });
   });
+
+  // Toggle integration accordion
+  function toggleIntegrationAccordion(accordion) {
+    const isActive = accordion.classList.contains('active');
+    
+    // Close all other accordions
+    document.querySelectorAll('.integration-accordion.active').forEach(el => {
+      if (el !== accordion) {
+        el.classList.remove('active');
+      }
+    });
+    
+    // Toggle current
+    accordion.classList.toggle('active');
+  }
 </script>
 @endsection

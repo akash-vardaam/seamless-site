@@ -114,6 +114,9 @@
     <!-- Footer -->
     @include('layouts.footer')
 
+    <!-- Toast Notifications -->
+    <x-ui.toast />
+
     <!-- Vite JS -->
     @vite('resources/js/app.js')
 
