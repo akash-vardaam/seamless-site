@@ -18,15 +18,17 @@
 
     <!-- Content -->
     <div class="hero-content">
-        @foreach($slides as $i => $s)
-            <div class="hero-slide" data-index="{{ $i }}" style="display: {{ $i === 0 ? 'block' : 'none' }};">
-                <div class="slide-inner">
-                    <h1 class="hero-title">{{ $s['word'] }}</h1>
-                    <p class="hero-pronunciation">{{ $s['pronunciation'] }}</p>
-                    <h2 class="hero-definition">{{ $s['definition'] }}</h2>
+        <div class="hero-text-slider">
+            @foreach($slides as $i => $s)
+                <div class="hero-slide {{ $i === 0 ? 'active' : '' }}" data-index="{{ $i }}">
+                    <div class="slide-inner">
+                        <h1 class="hero-title">{{ $s['word'] }}</h1>
+                        <p class="hero-pronunciation">{{ $s['pronunciation'] }}</p>
+                        <h2 class="hero-definition">{{ $s['definition'] }}</h2>
+                    </div>
                 </div>
-            </div>
-        @endforeach
+            @endforeach
+        </div>
 
         <div class="hero-divider"></div>
 
@@ -37,7 +39,8 @@
         <!-- Slide indicators -->
         <div class="hero-indicators">
             @foreach($slides as $i => $s)
-                <button data-slide-index="{{ $i }}" class="indicator {{ $i === 0 ? 'indicator-active' : '' }}" aria-label="Go to slide {{ $i + 1 }}"></button>
+                <button data-slide-index="{{ $i }}" class="indicator {{ $i === 0 ? 'indicator-active' : '' }}"
+                    aria-label="Go to slide {{ $i + 1 }}"></button>
             @endforeach
         </div>
     </div>
@@ -50,8 +53,6 @@
     </div>
 
     <style>
-
-
         .hero-video {
             position: absolute;
             inset: 0;
@@ -63,7 +64,7 @@
         .hero-overlay {
             position: absolute;
             inset: 0;
-            background-color: linear-gradient(135deg,#2b4beea1,#8c3cdd8a);
+            background-color: linear-gradient(135deg, #2b4beea1, #8c3cdd8a);
         }
 
         .hero-content {
@@ -75,8 +76,29 @@
             margin: 0 auto;
         }
 
+        .hero-text-slider {
+            display: grid;
+            grid-template-areas: "stack";
+            margin-bottom: 2rem;
+        }
+
         .hero-slide {
-            /* Slide container */
+            grid-area: stack;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transform: translateY(1rem);
+            /* translate-y-4 equivalent */
+            transition: all 0.5s ease-in-out;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            position: relative;
+            z-index: 10;
+            transform: translateY(0);
         }
 
         .slide-inner {
@@ -98,7 +120,7 @@
         .hero-title {
             font-size: 3rem;
             font-weight: 700;
-            font-family: Aspira,Inter,sans-serif;
+            font-family: Aspira, Inter, sans-serif;
             color: hsl(var(--primary-foreground));
             margin-bottom: 1rem;
         }
@@ -130,7 +152,7 @@
 
         .hero-definition {
             font-size: 1.5rem;
-            font-family: Aspira,Inter,sans-serif;
+            font-family: Aspira, Inter, sans-serif;
             color: hsl(var(--primary-foreground));
             margin-bottom: 1.5rem;
             line-height: 1.25;
@@ -239,9 +261,12 @@
 
 
         @keyframes bounce {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0);
             }
+
             50% {
                 transform: translateY(0.5rem);
             }
@@ -249,7 +274,7 @@
     </style>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        (function () {
             const root = document.getElementById('{{ $id }}');
             if (!root) return;
 
@@ -267,21 +292,10 @@
                 const outgoing = slides[current];
                 const incoming = slides[index];
 
-                const direction = index > current ? 'down' : 'up';
+                // Step 1: Fade Out Current
+                outgoing.classList.remove('active');
 
-                const outgoingInner = outgoing.querySelector('.slide-inner');
-                const incomingInner = incoming.querySelector('.slide-inner');
-
-                outgoingInner.classList.add(direction === 'down' ? 'anim-out-up' : 'anim-out-down');
-                incoming.style.display = 'block';
-                incomingInner.classList.add(direction === 'down' ? 'anim-out-down' : 'anim-out-up');
-
-                // force reflow
-                void incomingInner.offsetWidth;
-
-                incomingInner.classList.remove('anim-out-down', 'anim-out-up');
-
-                // update indicators
+                // Update indicators immediately for responsiveness
                 indicators.forEach((btn, i) => {
                     if (i === index) {
                         btn.classList.add('indicator-active', 'bg-primary-foreground', 'w-6');
@@ -292,28 +306,31 @@
                     }
                 });
 
+                // Step 2: Fade In Next (matches React's 500ms delay/transition duration)
                 setTimeout(() => {
-                    outgoing.style.display = 'none';
+                    incoming.classList.add('active');
                     current = index;
-                    isAnimating = false;
+
+                    // Allow next interaction after fade-in completes
+                    setTimeout(() => {
+                        isAnimating = false;
+                    }, 500);
                 }, 500);
             }
 
             function goNext() { show((current + 1) % slides.length); }
 
             indicators.forEach(btn => {
-                btn.addEventListener('click', (e) => {
+                btn.onclick = () => {
                     const idx = parseInt(btn.getAttribute('data-slide-index'));
                     if (isNaN(idx)) return;
                     clearInterval(interval);
                     show(idx);
                     interval = setInterval(goNext, intervalMs);
-                });
+                }
             });
 
-            interval = setInterval(() => {
-                show((current + 1) % slides.length);
-            }, intervalMs);
-        });
+            interval = setInterval(goNext, intervalMs);
+        })();
     </script>
 </section>

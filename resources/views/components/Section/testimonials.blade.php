@@ -1,36 +1,36 @@
 @php
-    $testimonials = [
-        [
-            'quote' => "This platform has completely transformed how we manage our association. The seamless integration and intuitive design have saved us countless hours.",
-            'author' => 'Sarah Mitchell',
-            'title' => 'Executive Director',
-            'company' => 'National Healthcare Association',
-            'rating' => 5,
-        ],
-        [
-            'quote' => "Finally, an AMS that adapts to our needs instead of forcing us to adapt to it. The unified approach has streamlined our entire operation.",
-            'author' => 'Michael Chen',
-            'title' => 'Operations Manager',
-            'company' => 'Tech Professionals Guild',
-            'rating' => 5,
-        ],
-        [
-            'quote' => "The support team is incredible, and the platform itself is a game-changer. We've seen a 40% increase in member engagement since switching.",
-            'author' => 'Emily Rodriguez',
-            'title' => 'Membership Director',
-            'company' => 'Creative Industries Alliance',
-            'rating' => 5,
-        ],
-        [
-            'quote' => "After years of struggling with outdated systems, this modern solution has reinvigorated our team and delighted our members.",
-            'author' => 'David Thompson',
-            'title' => 'CEO',
-            'company' => 'Professional Engineers Society',
-            'rating' => 5,
-        ],
-    ];
+  $testimonials = [
+    [
+      'quote' => "This platform has completely transformed how we manage our association. The seamless integration and intuitive design have saved us countless hours.",
+      'author' => 'Sarah Mitchell',
+      'title' => 'Executive Director',
+      'company' => 'National Healthcare Association',
+      'rating' => 5,
+    ],
+    [
+      'quote' => "Finally, an AMS that adapts to our needs instead of forcing us to adapt to it. The unified approach has streamlined our entire operation.",
+      'author' => 'Michael Chen',
+      'title' => 'Operations Manager',
+      'company' => 'Tech Professionals Guild',
+      'rating' => 5,
+    ],
+    [
+      'quote' => "The support team is incredible, and the platform itself is a game-changer. We've seen a 40% increase in member engagement since switching.",
+      'author' => 'Emily Rodriguez',
+      'title' => 'Membership Director',
+      'company' => 'Creative Industries Alliance',
+      'rating' => 5,
+    ],
+    [
+      'quote' => "After years of struggling with outdated systems, this modern solution has reinvigorated our team and delighted our members.",
+      'author' => 'David Thompson',
+      'title' => 'CEO',
+      'company' => 'Professional Engineers Society',
+      'rating' => 5,
+    ],
+  ];
 
-    $id = 'testimonials-' . uniqid();
+  $id = 'testimonials-' . uniqid();
 @endphp
 
 <section id="{{ $id }}" class="testimonials-section">
@@ -46,36 +46,60 @@
     <div class="testimonials-content">
       <div class="testimonials-slider">
         <button data-action="prev" class="testimonials-nav testimonials-nav-prev" aria-label="Previous testimonial">
-          <svg class="testimonials-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+          <svg class="testimonials-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
         </button>
 
         <button data-action="next" class="testimonials-nav testimonials-nav-next" aria-label="Next testimonial">
-          <svg class="testimonials-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          <svg class="testimonials-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
         </button>
 
         <div class="testimonials-card">
           @foreach($testimonials as $i => $t)
-            <div class="testimonial-item {{ $i === 0 ? 'active' : '' }}" data-index="{{ $i }}" style="display: {{ $i === 0 ? 'block' : 'none' }};">
-              <div class="relative bg-background/80 backdrop-blur-sm rounded-2xl shadow-xl border border-border/50 p-6 md:p-10">
+            <div class="testimonial-item {{ $i === 0 ? 'active' : '' }}" data-index="{{ $i }}">
+              <div
+                class="relative bg-background/80 backdrop-blur-sm rounded-2xl shadow-xl border border-border/50 p-6 md:p-10">
                 <div class="absolute -top-4 left-8 md:left-10">
-                  <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center shadow-lg shadow-primary/30">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-primary-foreground fill-primary-foreground"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path></svg>
+                  <div
+                    class="w-9 h-9 rounded-xl bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center shadow-lg shadow-primary/30">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="w-4 h-4 text-primary-foreground fill-primary-foreground">
+                      <path
+                        d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z">
+                      </path>
+                      <path
+                        d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z">
+                      </path>
+                    </svg>
                   </div>
                 </div>
 
                 <div class="transition-all duration-300 ease-out opacity-100 translate-x-0">
                   <div class="flex gap-0.5 mb-4 pt-3">
                     @for($s = 0; $s < $t['rating']; $s++)
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 fill-primary text-primary"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="w-4 h-4 fill-primary text-primary">
+                        <path
+                          d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z">
+                        </path>
+                      </svg>
                     @endfor
                   </div>
 
-                  <blockquote class="text-base md:text-lg lg:text-xl text-foreground leading-relaxed mb-6 font-medium">"{{ $t['quote'] }}"</blockquote>
+                  <blockquote class="text-base md:text-lg lg:text-xl text-foreground leading-relaxed mb-6 font-medium">
+                    "{{ $t['quote'] }}"</blockquote>
 
                   <div class="flex items-center gap-3">
                     <div class="relative">
-                      <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-                        <span class="text-lg font-bold bg-gradient-to-br from-primary to-accent bg-clip-text text-transparent">{{ strtoupper(substr($t['author'],0,1)) }}</span>
+                      <div
+                        class="w-11 h-11 rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
+                        <span
+                          class="text-lg font-bold bg-gradient-to-br from-primary to-accent bg-clip-text text-transparent">{{ strtoupper(substr($t['author'], 0, 1)) }}</span>
                       </div>
                     </div>
                     <div>
@@ -93,7 +117,8 @@
 
       <div class="testimonials-indicators">
         @foreach($testimonials as $i => $t)
-          <button data-indicator-index="{{ $i }}" class="testimonial-indicator {{ $i === 0 ? 'indicator-active' : '' }}" aria-label="Go to testimonial {{ $i + 1 }}"></button>
+          <button data-indicator-index="{{ $i }}" class="testimonial-indicator {{ $i === 0 ? 'indicator-active' : '' }}"
+            aria-label="Go to testimonial {{ $i + 1 }}"></button>
         @endforeach
       </div>
     </div>
@@ -140,9 +165,17 @@
 
     .testimonials-title {
       font-size: 2.25rem;
+      /* text-4xl */
       font-weight: 700;
       color: hsl(var(--foreground));
       margin-bottom: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .testimonials-title {
+        font-size: 3rem;
+        /* md:text-5xl */
+      }
     }
 
     @media (min-width: 768px) {
@@ -188,7 +221,7 @@
 
     .testimonials-nav:hover {
       background-color: hsl(var(--muted));
-      transform: translateY(-50%) scale(1.1);
+      /* scale is now handled in specific selectors to preserve translate */
     }
 
     .testimonials-nav-prev {
@@ -196,9 +229,17 @@
       transform: translateY(-50%) translateX(-1rem);
     }
 
+    .testimonials-nav-prev:hover {
+      transform: translateY(-50%) translateX(-1rem) scale(1.1);
+    }
+
     @media (min-width: 768px) {
       .testimonials-nav-prev {
-        transform: translateY(-50%) translateX(-3rem);
+        transform: translateY(-50%) translateX(-4rem);
+      }
+
+      .testimonials-nav-prev:hover {
+        transform: translateY(-50%) translateX(-4rem) scale(1.1);
       }
     }
 
@@ -207,9 +248,17 @@
       transform: translateY(-50%) translateX(1rem);
     }
 
+    .testimonials-nav-next:hover {
+      transform: translateY(-50%) translateX(1rem) scale(1.1);
+    }
+
     @media (min-width: 768px) {
       .testimonials-nav-next {
-        transform: translateY(-50%) translateX(3rem);
+        transform: translateY(-50%) translateX(4rem);
+      }
+
+      .testimonials-nav-next:hover {
+        transform: translateY(-50%) translateX(4rem) scale(1.1);
       }
     }
 
@@ -222,28 +271,27 @@
       position: relative;
       padding: 0;
       width: 100%;
+      display: grid;
+      grid-template-areas: "stack";
     }
 
+    /* Animation Classes */
     .testimonial-item {
+      grid-area: stack;
       opacity: 0;
-      transform: translateX(0);
-      transition: opacity 0.3s ease, transform 0.3s ease;
+      transform: translateX(1rem); /* Default "out" state */
+      transition: all 0.3s ease-in-out;
       width: 100%;
+      pointer-events: none;
+      visibility: hidden;
     }
 
     .testimonial-item.active {
       opacity: 1;
       transform: translateX(0);
-    }
-
-    #{{ $id }} .anim-left {
-      opacity: 0;
-      transform: translateX(-20px);
-    }
-
-    #{{ $id }} .anim-right {
-      opacity: 0;
-      transform: translateX(20px);
+      pointer-events: auto;
+      visibility: visible;
+      z-index: 10;
     }
 
     .testimonials-indicators {
@@ -287,7 +335,7 @@
     }
 
     /* Testimonial Card Styling */
-    .testimonial-item > div {
+    .testimonial-item>div {
       background-color: rgba(255, 255, 255, 0.8);
       backdrop-filter: blur(8px);
       border-radius: 1rem;
@@ -298,13 +346,13 @@
     }
 
     @media (min-width: 768px) {
-      .testimonial-item > div {
+      .testimonial-item>div {
         padding: 2.5rem;
       }
     }
 
     /* Quote Icon */
-    .testimonial-item > div > div:first-child {
+    .testimonial-item>div>div:first-child {
       position: absolute;
       top: -1rem;
       left: 2rem;
@@ -319,12 +367,12 @@
     }
 
     @media (min-width: 768px) {
-      .testimonial-item > div > div:first-child {
+      .testimonial-item>div>div:first-child {
         left: 2.5rem;
       }
     }
 
-    .testimonial-item > div > div:first-child svg {
+    .testimonial-item>div>div:first-child svg {
       width: 1rem;
       height: 1rem;
       color: white;
@@ -391,31 +439,30 @@
       border: 2px solid hsl(var(--background));
     }
 
-    .testimonial-item div > div:last-child p {
+    .testimonial-item div>div:last-child p {
       margin: 0;
     }
 
-    .testimonial-item div > div:last-child p:first-child {
+    .testimonial-item div>div:last-child p:first-child {
       font-weight: 700;
       font-size: 0.875rem;
       color: hsl(var(--foreground));
     }
 
-    .testimonial-item div > div:last-child p:nth-child(2) {
+    .testimonial-item div>div:last-child p:nth-child(2) {
       color: hsl(var(--muted-foreground));
       font-size: 0.75rem;
     }
 
-    .testimonial-item div > div:last-child p:nth-child(3) {
+    .testimonial-item div>div:last-child p:nth-child(3) {
       font-size: 0.75rem;
       color: hsl(var(--primary));
       font-weight: 500;
     }
-
   </style>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    (function () {
       const root = document.getElementById('{{ $id }}');
       if (!root) return;
 
@@ -424,31 +471,26 @@
       const nextBtn = root.querySelector('[data-action="next"]');
       const indicators = Array.from(root.querySelectorAll('.testimonial-indicator'));
 
-      let current = 0;
+      let currentIndex = 0;
       let isAnimating = false;
       const intervalMs = 6000;
       let interval = null;
 
-      function show(index, dir = 'right') {
-        if (isAnimating || index === current) return;
+      function goToSlide(index, direction) {
+        if (isAnimating || index === currentIndex) return;
         isAnimating = true;
 
-        const outgoing = items[current];
+        const outgoing = items[currentIndex];
         const incoming = items[index];
 
+        // Step 1: Animate OUT (Fade out + slide)
         outgoing.classList.remove('active');
-        outgoing.classList.add(dir === 'right' ? 'anim-left' : 'anim-right');
-
-        incoming.style.display = 'block';
-        incoming.classList.add(dir === 'right' ? 'anim-right' : 'anim-left');
-
-        // force reflow
-        void incoming.offsetWidth;
-
-        incoming.classList.remove('anim-left', 'anim-right');
-        incoming.classList.add('active');
-
-        // update indicators
+        // We can add specific direction class if we want, but simple opacity/transform is sufficient
+        // React ref uses: direction === 'right' ? '-translate-x-8' : 'translate-x-8'
+        // But simply "removing active" reverts to the .testimonial-item state (opacity 0, translate 1rem)
+        // Let's make it smarter: just fade out.
+        
+        // Update indicators immediately
         indicators.forEach((btn, i) => {
           if (i === index) {
             btn.classList.add('indicator-active', 'w-10');
@@ -459,31 +501,49 @@
           }
         });
 
+        // Step 2: Wait, then Animate IN
         setTimeout(() => {
-          outgoing.style.display = 'none';
-          current = index;
-          isAnimating = false;
-        }, 300);
+          currentIndex = index;
+          
+          // Prepare incoming (it's already hidden)
+          // Add active class to fade in & slide to 0
+          incoming.classList.add('active');
+
+          setTimeout(() => {
+            isAnimating = false;
+          }, 300); // Wait for fade-in to complete
+        }, 300); // Wait for fade-out to complete
       }
 
-      function goNext() { show((current + 1) % items.length, 'right'); }
-      function goPrev() { show((current - 1 + items.length) % items.length, 'left'); }
+      function goNext() {
+        const nextIndex = (currentIndex + 1) % items.length;
+        goToSlide(nextIndex, 'right');
+      }
 
-      nextBtn.addEventListener('click', () => { clearInterval(interval); goNext(); interval = setInterval(goNext, intervalMs); });
-      prevBtn.addEventListener('click', () => { clearInterval(interval); goPrev(); interval = setInterval(goNext, intervalMs); });
+      function goPrev() {
+        const prevIndex = (currentIndex - 1 + items.length) % items.length;
+        goToSlide(prevIndex, 'left');
+      }
+
+      function resetInterval() {
+        clearInterval(interval);
+        interval = setInterval(goNext, intervalMs);
+      }
+
+      if (nextBtn) nextBtn.onclick = () => { resetInterval(); goNext(); };
+      if (prevBtn) prevBtn.onclick = () => { resetInterval(); goPrev(); };
 
       indicators.forEach(btn => {
-        btn.addEventListener('click', (e) => {
+        btn.onclick = () => {
           const idx = parseInt(btn.getAttribute('data-indicator-index'));
           if (isNaN(idx)) return;
-          clearInterval(interval);
-          show(idx, idx > current ? 'right' : 'left');
-          interval = setInterval(goNext, intervalMs);
-        });
+          resetInterval();
+          goToSlide(idx, idx > currentIndex ? 'right' : 'left');
+        };
       });
 
-      // start autoplay
+      // Start autoplay
       interval = setInterval(goNext, intervalMs);
-    });
+    })();
   </script>
 </section>
