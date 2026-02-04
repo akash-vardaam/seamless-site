@@ -61,7 +61,7 @@
   .membership-heading {
     font-size: 2.5rem;
     font-weight: 700;
-    font-family: 'Georgia', 'Times New Roman', serif;
+    font-family: Aspira,Inter,sans-serif;
     color: hsl(var(--primary-foreground));
     margin-bottom: 1.5rem;
   }
@@ -121,6 +121,7 @@
     justify-content: center;
     margin-top: auto;
     padding-top: 140px;
+    min-width: 100vw;
   }
 
   .membership-screenshot-wrapper {
@@ -132,10 +133,12 @@
 
   .membership-screenshot-container {
     position: relative;
+    display: flex;
+    justify-content: center;
   }
 
   .membership-screenshot {
-    width: 100%;
+    width: 78%;
     height: auto;
     border-top-left-radius: 0.75rem;
     border-top-right-radius: 0.75rem;

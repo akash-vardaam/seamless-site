@@ -35,7 +35,7 @@
         }
 
         /* Hero Section */
-        .hero-section {
+        .feature-hero-section {
             position: relative;
             padding-top: 10rem;
             padding-bottom: 8rem;
@@ -115,7 +115,7 @@
             position: absolute;
             inset: 0;
             border-radius: 1rem;
-            background: linear-gradient(135deg, hsla(var(--primary), 0.05), transparent, hsla(var(--secondary), 0.05));
+            background: linear-gradient( to bottom right, #2b4bee0d, transparent, #8c3cdd0d );
             opacity: 0;
             transition: opacity 0.5s ease;
         }
@@ -145,13 +145,13 @@
             position: relative;
             padding: 2rem;
             border-radius: 1rem;
-            background: linear-gradient(135deg, hsla(var(--muted), 0.5), hsla(var(--muted), 0.2));
-            border: 1px solid hsla(var(--border), 0.3);
+            background: linear-gradient(to bottom right, hsl(220 14% 96% / .5) , hsl(220 14% 96% / .2));
+            border: 1px solid #F7F7F8;
             transition: all 0.3s ease;
         }
 
         .capability-card:hover {
-            border-color: hsla(var(--primary), 0.2);
+            border-color: #D5DBFC;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
@@ -193,6 +193,8 @@
             overflow: hidden;
             border: 1px solid hsla(var(--border), 0.5);
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            max-width: 83%;
+            margin: 0 auto;
         }
 
         /* CTA Section */
@@ -305,7 +307,7 @@
 
 @section('content')
     <!-- Hero Section -->
-    <section class="hero-section" style="background-image: url('{{ asset('assets/inner-page-header.png') }}')">
+    <section class="feature-hero-section" style="background-image: url('{{ asset('assets/inner-page-header.png') }}')">
         <div class="hero-gradient"></div>
         <div class="container" style="position: relative; z-index: 10;">
             <div style="max-width: 64rem; margin: 0 auto; text-align: center;">
@@ -324,7 +326,7 @@
 
                 <div class="scroll-animate animate-delay-200">
                     <div
-                        style="display: flex; flex-direction: column; gap: 1rem; justify-content: center; align-items: center; margin-top: 2rem;">
+                        style="display: flex; flex-direction: row; gap: 1rem; justify-content: center; align-items: center; margin-top: 2rem;">
                         <a href="#video-section" class="btn-white">
                             See Seamless in Action
                             <svg class="lucide-sm arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -349,19 +351,20 @@
                 <p style="font-size: 1.875rem; color: hsl(var(--foreground)); line-height: 1.75; font-weight: 300;">
                     Associations don't need more features.
                 </p>
-                <p class="font-display" style="font-size: 1.875rem; color: hsl(var(--foreground)); margin-top: 0.5rem;">
-                    They need systems that don't fight each other.
-                </p>
+                <p class="font-display" style=" font-size: 1.875rem; margin-top: 0.5rem; background: linear-gradient(135deg, hsl(230, 85%, 55%) 0%, hsl(270, 70%, 55%) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; ">
+  They need systems that don't fight each other.
+</p>
+
             </div>
         </div>
     </section>
 
     <!-- Three Pillars Section -->
     <section id="pillars-section"
-        style="padding: 7rem 0; position: relative; overflow: hidden; background-size: cover; background-position: center; background-repeat: no-repeat; background-image: url('{{ asset('assets/section-6-bg.png') }}')">
+        style="padding: 9rem 0; position: relative; overflow: hidden; background-size: cover; background-position: center; background-repeat: no-repeat; background-image: url('{{ asset('assets/section-6-bg.png') }}')">
         <div class="container" style="position: relative;">
             <div class="scroll-animate" style="text-align: center; margin-bottom: 5rem;">
-                <span class="badge badge-primary" style="margin-bottom: 1.5rem;">
+                <span class="badge badge-primary" style="margin-bottom: 1.5rem; background: #2b4bee1a;">
                     Foundation
                 </span>
                 <h2 class="font-display" style="font-size: clamp(1.875rem, 4vw, 3rem); color: hsl(var(--foreground));">
@@ -370,7 +373,7 @@
             </div>
 
             <div style="max-width: 96rem; margin: 0 auto;">
-                <div class="grid-3">
+                <div class="grid-3" style="max-width: 93%; margin: 0 auto;">
                     @php
                         $pillars = [
                             [
@@ -404,7 +407,7 @@
                                     <div class="pillar-gradient"></div>
 
                                     <div style="position: relative;">
-                                        <div class="pillar-icon">
+                                        <div class="pillar-icon" style="background: #2b4bee1a">
                                             <svg class="lucide" fill="none" stroke="hsl(var(--primary))" viewBox="0 0 24 24">
                                                 {!! $pillar['icon'] !!}
                                             </svg>
@@ -433,26 +436,26 @@
     </section>
 
     <!-- Core Capabilities -->
-    <section style="padding: 7rem 0; position: relative; overflow: hidden;">
+    <section style="padding: 9rem 0; position: relative; overflow: hidden;">
         <div class="blob-primary"></div>
         <div class="blob-secondary"></div>
 
         <div class="container" style="position: relative;">
             <div class="scroll-animate" style="text-align: center; margin-bottom: 5rem;">
-                <span class="badge badge-accent" style="margin-bottom: 1.5rem;">
+                <span class="badge badge-accent" style="margin-bottom: 1.5rem; background: #10b77f1a;">
                     Capabilities
                 </span>
                 <h2 class="font-display"
                     style="font-size: clamp(1.875rem, 4vw, 3rem); color: hsl(var(--foreground)); margin-bottom: 1rem;">
                     Everything membership needs
                 </h2>
-                <p style="color: hsl(var(--foreground) / 0.7); max-width: 32rem; margin: 0 auto; font-size: 1.125rem;">
+                <p style="color: hsl(var(--foreground) / 0.7); max-width: fit-content; margin: 0 auto; font-size: 1.125rem;">
                     Every capability supports the membership relationship — not the other way around.
                 </p>
             </div>
 
             <div style="max-width: 80rem; margin: 0 auto;">
-                <div class="grid-2">
+                <div class="grid-2" style="max-width: 85%; margin: 0 auto;">
                     @php
                         $capabilities = [
                             [
@@ -507,7 +510,7 @@
                             <div class="capability-card">
                                 <div style="display: flex; align-items: flex-start; gap: 1.25rem;">
                                     <div class="capability-icon">
-                                        <svg class="lucide-lg" fill="none" stroke="white" viewBox="0 0 24 24">
+                                        <svg class="lucide-lg" fill="none" stroke="white" viewBox="0 0 24 24" stroke-width="2">
                                             {!! $capability['icon'] !!}
                                         </svg>
                                     </div>
@@ -544,18 +547,18 @@
 
     <!-- Product Video Section -->
     <section id="video-section"
-        style="padding: 7rem 0; position: relative; overflow: hidden; background-size: cover; background-position: center; background-repeat: no-repeat; background-image: url('{{ asset('assets/section-6-bg.png') }}')">
+        style="padding: 9rem 0; position: relative; overflow: hidden; background-size: cover; background-position: center; background-repeat: no-repeat; background-image: url('{{ asset('assets/section-6-bg.png') }}')">
         <div class="container" style="position: relative;">
             <div style="max-width: 80rem; margin: 0 auto;">
                 <div class="scroll-animate" style="text-align: center; margin-bottom: 4rem;">
-                    <span class="badge badge-primary" style="margin-bottom: 1.5rem;">
+                    <span class="badge badge-primary" style="margin-bottom: 1.5rem; background: #2b4bee1a;">
                         See It In Action
                     </span>
                     <h2 class="font-display"
                         style="font-size: clamp(1.875rem, 4vw, 3rem); color: hsl(var(--foreground)); margin-bottom: 1rem;">
                         Membership, without friction.
                     </h2>
-                    <p style="color: hsl(var(--foreground) / 0.7); max-width: 32rem; margin: 0 auto; font-size: 1.125rem;">
+                    <p style="color: hsl(var(--foreground) / 0.7); max-width: 44rem; margin: 0 auto; font-size: 1.125rem;">
                         A unified system that removes barriers across the entire member lifecycle —
                         from backend to frontend.
                     </p>
@@ -595,7 +598,7 @@
                 </p>
 
                 <div
-                    style="display: flex; flex-direction: column; gap: 1rem; justify-content: center; align-items: center;">
+                    style="display: flex; flex-direction: row; gap: 1rem; justify-content: center; align-items: center;">
                     <a href="{{ route('request-demo') }}" class="btn-white">
                         Request a Demo
                         <svg class="lucide" fill="none" stroke="currentColor" viewBox="0 0 24 24">

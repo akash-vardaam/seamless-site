@@ -63,7 +63,7 @@
         .hero-overlay {
             position: absolute;
             inset: 0;
-            background-color: rgba(0, 0, 0, 0.3);
+            background-color: linear-gradient(135deg,#2b4beea1,#8c3cdd8a);
         }
 
         .hero-content {
@@ -98,7 +98,7 @@
         .hero-title {
             font-size: 3rem;
             font-weight: 700;
-            font-family: 'Georgia', 'Times New Roman', serif;
+            font-family: Aspira,Inter,sans-serif;
             color: hsl(var(--primary-foreground));
             margin-bottom: 1rem;
         }
@@ -130,7 +130,7 @@
 
         .hero-definition {
             font-size: 1.5rem;
-            font-family: 'Georgia', 'Times New Roman', serif;
+            font-family: Aspira,Inter,sans-serif;
             color: hsl(var(--primary-foreground));
             margin-bottom: 1.5rem;
             line-height: 1.25;

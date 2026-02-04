@@ -28,7 +28,7 @@
         font-size: 4rem;
         font-weight: 700;
         color: hsl(var(--foreground));
-        font-family: 'Georgia', 'Times New Roman', serif;
+        font-family: Aspira,Inter,sans-serif;
     }
 
     .error-message {

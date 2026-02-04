@@ -144,6 +144,7 @@ button {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  background: var(--gradient-purple);
 }
 
 .section-light {
@@ -153,6 +154,7 @@ button {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  background-color: hsl(var(--muted));
 }
 
 .section-gradient {
@@ -162,6 +164,73 @@ button {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  background: var(--gradient-blue-purple);
+}
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--gradient-hero);
+}
+
+/* Frustration Section */
+.frustration-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: hsl(var(--background));
+}
+
+/* Better Way Section */
+.better-way-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--gradient-purple);
+}
+
+/* Features Section */
+.features-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: hsl(var(--muted));
+}
+
+/* Membership Section */
+.membership-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: visible;
+  background: var(--gradient-blue-purple);
+}
+
+/* Testimonials Section */
+.testimonials-section {
+  position: relative;
+  min-height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: hsl(var(--background));
 }
 
 /* Button Styles */
@@ -185,7 +254,7 @@ button {
 
 .btn-cta:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 60px hsl(160 84% 39% / 0.4);
+  /* box-shadow: 0 0 60px hsl(160 84% 39% / 0.4); */
 }
 
 .btn-outline {
@@ -195,10 +264,10 @@ button {
   gap: 0.5rem;
   padding: 1rem 2rem;
   border-radius: 9999px;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 1rem;
-  border: 2px solid hsl(var(--primary));
-  color: hsl(var(--primary));
+  border: 1px solid hsl(222 47% 11%);
+  color: hsl(222 47% 11%);
   background: transparent;
   cursor: pointer;
   text-decoration: none;
@@ -206,7 +275,7 @@ button {
 }
 
 .btn-outline:hover {
-  background-color: hsl(var(--primary));
+  background-color: hsl(222 47% 11%);
   color: white;
 }
 
@@ -254,8 +323,12 @@ button {
 }
 
 .btn-sm {
-  padding: 0.625rem 1.25rem;
+  padding: 0.475rem 1.2rem;
   font-size: 0.875rem;
+}
+
+.btn-cta.btn-sm {
+  padding: 0.475rem 1.2rem !important;
 }
 
 /* Typography */
@@ -468,5 +541,62 @@ button {
 
   .text-body {
     font-size: 1rem;
+  }
+}
+
+/* Ensure all sections have proper min-height and overflow handling */
+section {
+  position: relative;
+  width: 100%;
+}
+
+/* Hero Section - Special handling */
+.hero-section,
+.frustration-section,
+.better-way-section,
+.features-section,
+.membership-section,
+.testimonials-section {
+  scroll-snap-align: start;
+}
+
+/* Background image handling */
+.hero-section,
+.frustration-section,
+.better-way-section,
+.features-section,
+.membership-section,
+.testimonials-section {
+  background-attachment: scroll;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Ensure overlay text is readable */
+.hero-content,
+.frustration-content,
+.better-way-container,
+.features-container,
+.membership-content,
+.testimonials-container {
+  position: relative;
+  z-index: 10;
+}
+
+/* Responsive text sizing for mobile */
+@media (max-width: 640px) {
+  .hero-title {
+    font-size: 2rem !important;
+  }
+  
+  .better-way-heading,
+  .membership-heading,
+  .frustration-heading {
+    font-size: 2rem !important;
+  }
+  
+  .testimonials-title {
+    font-size: 1.75rem !important;
   }
 }

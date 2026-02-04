@@ -100,7 +100,7 @@
     }
 
     .feature-title {
-      font-family: 'Georgia', 'Times New Roman', serif;
+      font-family: Aspira,Inter,sans-serif;
       font-size: 1.25rem;
       color: hsl(var(--foreground));
     }

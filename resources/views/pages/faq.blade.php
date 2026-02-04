@@ -8,7 +8,7 @@
 
 
         /* Hero Section */
-        .hero-section {
+        .faq-hero-section {
             padding-top: 8rem;
             padding-bottom: 5rem;
             position: relative;
@@ -28,7 +28,7 @@
         }
 
         .accordion-item {
-            background-color: hsla(var(--background), 0.8);
+            background-color: #ffffff;
             backdrop-filter: blur(8px);
             border-radius: 1rem;
             border: 1px solid hsla(var(--border), 0.5);
@@ -36,6 +36,10 @@
             overflow: hidden;
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
             transition: box-shadow 0.3s ease;
+        }
+
+        .accordion-item:hover {
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / .1), 0 2px 4px -2px rgb(0 0 0 / .1);
         }
 
         .accordion-trigger {
@@ -59,6 +63,10 @@
             height: 1.25rem;
             flex-shrink: 0;
             transition: transform 0.3s ease;
+        }
+
+        .accordion-item.active {
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / .1), 0 2px 4px -2px rgb(0 0 0 / .1);
         }
 
         .accordion-item.active .accordion-icon {
@@ -98,14 +106,14 @@
 
 @section('content')
     <!-- Hero Section -->
-    <section class="hero-section" style="background-image: url('{{ asset('assets/inner-page-header.png') }}')">
+    <section class="faq-hero-section" style="background-image: url('{{ asset('assets/inner-page-header.png') }}')">
         <div class="container" style="position: relative; z-index: 10;">
             <div class="scroll-animate" style="max-width: 48rem; margin: 0 auto; text-align: center;">
                 <h1 class="font-display"
                     style="font-size: clamp(2.25rem, 5vw, 4.5rem); color: white; margin-bottom: 1.5rem; line-height: 1.1;">
                     Understanding Seamless <span class="text-accent">starts here.</span>
                 </h1>
-                <p style="font-size: 1.125rem; color: rgba(255, 255, 255, 0.8); line-height: 1.75; margin-bottom: 2rem;">
+                <p style="font-size: 1.125rem; color: rgba(255, 255, 255, 0.8); line-height: 1.5;  max-width:90%; margin: 20px auto;">
                     Clear answers to common questions about Seamless, our approach, and how we support modern associations.
                 </p>
                 <a href="{{ route('request-demo') }}" class="btn-cta">
@@ -118,7 +126,7 @@
     <!-- FAQ Section -->
     <section
         style="padding: 5rem 0; position: relative; background-size: cover; background-position: center; background-repeat: no-repeat; background-image: url('{{ asset('assets/section-6-bg.png') }}')">
-        <div style="position: absolute; inset: 0; background-color: hsla(var(--background), 0.7);"></div>
+        <div style="position: absolute; inset: 0; background-color: rgba(255, 255, 255, 0.8);"></div>
         <div class="container" style="position: relative; z-index: 10;">
             <div style="max-width: 48rem; margin: 0 auto;">
                 <div class="scroll-animate">
@@ -203,10 +211,10 @@
     </section>
 
     <!-- CTA Section -->
-    <section style="padding: 5rem 0; background-color: hsla(var(--muted), 0.3);">
+    <section style="padding: 7rem 0; background-color: hsla(var(--muted), 0.3);">
         <div class="container">
-            <div class="scroll-animate" style="max-width: 32rem; margin: 0 auto; text-align: center;">
-                <h2 class="font-display" style="font-size: 1.875rem; color: hsl(var(--foreground)); margin-bottom: 1rem;">
+            <div class="scroll-animate" style="max-width: 46rem; margin: 0 auto; text-align: center;">
+                <h2 class="font-display" style="font-size: 2.25rem; color: hsl(var(--foreground)); margin-bottom: 1rem;">
                     Still have questions?
                 </h2>
                 <p style="font-size: 1.125rem; color: hsl(var(--foreground) / 0.7); margin-bottom: 2rem;">

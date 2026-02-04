@@ -12,7 +12,7 @@
 
 
     /* Hero Section */
-    .hero-section {
+    .demo-hero-section {
         padding-top: 8rem;
         padding-bottom: 5rem;
         position: relative;
@@ -30,7 +30,7 @@
         border-radius: 1.5rem;
         padding: 3rem;
         box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        border: 1px solid hsla(var(--border), 0.5);
+        border: 1px solid #F2F3F5;
     }
 
     .form-group {
@@ -50,9 +50,10 @@
         width: 100%;
         height: 3rem;
         padding: 0.75rem 1rem;
-        border: 1px solid hsla(var(--border), 1);
+        border: 1px solid #E5E7EB;
         border-radius: 0.75rem;
-        font-size: 1rem;
+        font-size: 14px;
+        line-height: 20px;
         background-color: hsl(var(--background));
         color: hsl(var(--foreground));
         transition: all 0.2s ease;
@@ -83,6 +84,25 @@
     }
 
     /* Button */
+        .form-card .btn-cta {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem; /* static spacing */
+    }
+
+    .form-card .btn-cta .arrow-icon {
+    transition: transform 200ms ease;
+    }
+
+    .form-card .btn-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 40px hsl(160 84% 39% / 0.3);
+    }
+
+    .form-card .btn-cta:hover .arrow-icon {
+    transform: translateX(7px);
+    }
 
 
     /* Success Message */
@@ -120,15 +140,15 @@
     }
 
     .lucide-lg {
-        width: 1rem;
-        height: 1rem;
+        width: 1.5rem;
+        height: 2rem;
     }
 </style>
 @endpush
 
 @section('content')
 <!-- Hero Section -->
-<section class="hero-section" style="background-image: url('{{ asset('assets/inner-page-header.png') }}')">
+<section class="demo-hero-section" style="background-image: url('{{ asset('assets/inner-page-header.png') }}')">
     <div class="container" style="position: relative; z-index: 10;">
         <div class="scroll-animate" style="max-width: 48rem; margin: 0 auto; text-align: center;">
             <h1 class="font-display" style="font-size: clamp(2.25rem, 5vw, 4.5rem); color: white; margin-bottom: 1.5rem; line-height: 1.1;">
@@ -142,9 +162,9 @@
 </section>
 
 <!-- Form Section -->
-<section style="padding: 5rem 0;">
+<section style="padding: 7rem 0;">
     <div class="container">
-        <div style="max-width: 32rem; margin: 0 auto;">
+        <div style="max-width: 42rem; margin: 0 auto;">
             <!-- Success Message (hidden by default) -->
             <div id="successMessage" class="scroll-animate hidden">
                 <div class="success-message">

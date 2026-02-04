@@ -12,7 +12,7 @@
 
 
     /* Hero Section */
-    .hero-section {
+    .contact-hero-section {
         padding-top: 8rem;
         padding-bottom: 5rem;
         position: relative;
@@ -101,23 +101,41 @@
     }
 
     /* Button */
+        .form-card .btn-cta {
+            width: 100%;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem; /* static spacing */
+            }
 
+            .form-card .btn-cta .arrow-icon {
+            transition: transform 200ms ease;
+            }
 
-    /* Success Message */
-    .success-card {
-        text-align: center;
-        padding: 4rem 2rem;
-        background-color: hsl(var(--card));
-        border-radius: 1.5rem;
-        border: 1px solid hsl(var(--border) / 0.5);
-    }
+            .form-card .btn-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 40px hsl(160 84% 39% / 0.3);
+            }
 
-    .success-icon {
-        width: 4rem;
-        height: 4rem;
-        color: hsl(var(--accent));
-        margin: 0 auto 1.5rem;
-    }
+            .form-card .btn-cta:hover .arrow-icon {
+            transform: translateX(7px);
+            }
+
+            /* Success Message */
+            .success-card {
+                text-align: center;
+                padding: 4rem 2rem;
+                background-color: hsl(var(--card));
+                border-radius: 1.5rem;
+                border: 1px solid hsl(var(--border) / 0.5);
+            }
+
+            .success-icon {
+                width: 4rem;
+                height: 4rem;
+                color: hsl(var(--accent));
+                margin: 0 auto 1.5rem;
+            }
 
     /* Grid Layout */
     .contact-grid {
@@ -159,8 +177,8 @@
     }
 
     .lucide-lg {
-        width: 1rem;
-        height: 1rem;
+        width: 1.5rem;
+        height: 2rem;
     }
 
     /* Hidden class for JS toggle */
@@ -172,7 +190,7 @@
 
 @section('content')
 <!-- Hero Section -->
-<section class="hero-section" style="background-image: url('{{ asset('assets/inner-page-header.png') }}')">
+<section class="contact-hero-section" style="background-image: url('{{ asset('assets/inner-page-header.png') }}')">
     <div class="container" style="position: relative; z-index: 10;">
         <div class="scroll-animate" style="max-width: 48rem; margin: 0 auto; text-align: center;">
             <h1 class="hero-title font-display" style="color: white;">
@@ -186,7 +204,7 @@
 </section>
 
 <!-- Contact Section -->
-<section style="padding: 5rem 0;">
+<section style="padding: 7rem 0;">
     <div class="container">
         <div class="contact-grid">
             <!-- Contact Info -->

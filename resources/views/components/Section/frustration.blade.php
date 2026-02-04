@@ -42,7 +42,7 @@
   }
 
   .frustration-container {
-    max-width: 1280px;
+    min-width: 75vw;
     margin: 0 auto;
     padding: 5rem 1.5rem;
   }
@@ -69,7 +69,7 @@
   .frustration-heading {
     font-size: 2.5rem;
     font-weight: 700;
-    font-family: 'Georgia', 'Times New Roman', serif;
+    font-family: Aspira,Inter,sans-serif;
     color: hsl(var(--foreground));
     margin-bottom: 1.5rem;
   }

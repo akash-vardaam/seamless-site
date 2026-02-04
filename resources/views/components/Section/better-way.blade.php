@@ -41,7 +41,7 @@
   .better-way-heading {
     font-size: 2.5rem;
     font-weight: 700;
-    font-family: 'Georgia', 'Times New Roman', serif;
+    font-family: Aspira,Inter,sans-serif;
     color: hsl(var(--primary-foreground));
     margin-bottom: 1.5rem;
     line-height: 1.25;
@@ -76,7 +76,7 @@
 
   .better-way-tagline {
     font-size: 1.125rem;
-    font-family: 'Georgia', 'Times New Roman', serif;
+    font-family: Aspira,Inter,sans-Aspira,Inter,sans-serifserif;
     color: hsl(var(--primary-foreground));
   }
 

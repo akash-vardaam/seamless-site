@@ -56,33 +56,33 @@
         <div class="testimonials-card">
           @foreach($testimonials as $i => $t)
             <div class="testimonial-item {{ $i === 0 ? 'active' : '' }}" data-index="{{ $i }}" style="display: {{ $i === 0 ? 'block' : 'none' }};">
-              <div class="testimonial-quote-icon">
-                <div class="testimonial-quote-icon-inner">
-                  <svg class="testimonial-quote-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h8"/></svg>
-                </div>
-              </div>
-
-              <div class="testimonial-content">
-                <div class="testimonial-stars">
-                  @for($s = 0; $s < $t['rating']; $s++)
-                    <svg class="testimonial-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.431L24 9.748l-6 5.848L19.335 24 12 20.201 4.665 24 6 15.596 0 9.748l8.332-1.73z"/></svg>
-                  @endfor
+              <div class="relative bg-background/80 backdrop-blur-sm rounded-2xl shadow-xl border border-border/50 p-6 md:p-10">
+                <div class="absolute -top-4 left-8 md:left-10">
+                  <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center shadow-lg shadow-primary/30">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-primary-foreground fill-primary-foreground"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"></path></svg>
+                  </div>
                 </div>
 
-                <blockquote class="testimonial-quote">"{{ $t['quote'] }}"</blockquote>
-
-                <div class="testimonial-author">
-                  <div class="testimonial-avatar-wrapper">
-                    <div class="testimonial-avatar">
-                      <span class="testimonial-avatar-letter">{{ strtoupper(substr($t['author'],0,1)) }}</span>
-                    </div>
-                    <div class="testimonial-avatar-badge"></div>
+                <div class="transition-all duration-300 ease-out opacity-100 translate-x-0">
+                  <div class="flex gap-0.5 mb-4 pt-3">
+                    @for($s = 0; $s < $t['rating']; $s++)
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 fill-primary text-primary"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
+                    @endfor
                   </div>
 
-                  <div class="testimonial-author-info">
-                    <p class="testimonial-author-name">{{ $t['author'] }}</p>
-                    <p class="testimonial-author-title">{{ $t['title'] }}</p>
-                    <p class="testimonial-author-company">{{ $t['company'] }}</p>
+                  <blockquote class="text-base md:text-lg lg:text-xl text-foreground leading-relaxed mb-6 font-medium">"{{ $t['quote'] }}"</blockquote>
+
+                  <div class="flex items-center gap-3">
+                    <div class="relative">
+                      <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
+                        <span class="text-lg font-bold bg-gradient-to-br from-primary to-accent bg-clip-text text-transparent">{{ strtoupper(substr($t['author'],0,1)) }}</span>
+                      </div>
+                    </div>
+                    <div>
+                      <p class="font-bold text-sm text-foreground">{{ $t['author'] }}</p>
+                      <p class="text-muted-foreground text-xs">{{ $t['title'] }}</p>
+                      <p class="text-xs text-primary font-medium">{{ $t['company'] }}</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -220,24 +220,15 @@
 
     .testimonials-card {
       position: relative;
-      background-color: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(8px);
-      border-radius: 1rem;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-      border: 1px solid rgba(229, 231, 235, 0.5);
-      padding: 1.5rem;
-    }
-
-    @media (min-width: 768px) {
-      .testimonials-card {
-        padding: 2.5rem;
-      }
+      padding: 0;
+      width: 100%;
     }
 
     .testimonial-item {
       opacity: 0;
       transform: translateX(0);
       transition: opacity 0.3s ease, transform 0.3s ease;
+      width: 100%;
     }
 
     .testimonial-item.active {
@@ -253,134 +244,6 @@
     #{{ $id }} .anim-right {
       opacity: 0;
       transform: translateX(20px);
-    }
-
-    .testimonial-quote-icon {
-      position: absolute;
-      top: -1rem;
-      left: 2rem;
-    }
-
-    @media (min-width: 768px) {
-      .testimonial-quote-icon {
-        left: 2.5rem;
-      }
-    }
-
-    .testimonial-quote-icon-inner {
-      width: 2.25rem;
-      height: 2.25rem;
-      border-radius: 0.75rem;
-      background: linear-gradient(to bottom right, hsl(var(--primary)), rgba(59, 130, 246, 0.7));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    }
-
-    .testimonial-quote-svg {
-      width: 1rem;
-      height: 1rem;
-      color: white;
-    }
-
-    .testimonial-content {
-      transition: all 0.3s ease-out;
-    }
-
-    .testimonial-stars {
-      display: flex;
-      gap: 0.125rem;
-      margin-bottom: 1rem;
-      padding-top: 0.75rem;
-    }
-
-    .testimonial-star {
-      width: 1rem;
-      height: 1rem;
-      fill: hsl(var(--primary));
-      color: hsl(var(--primary));
-    }
-
-    .testimonial-quote {
-      font-size: 1rem;
-      color: hsl(var(--foreground));
-      line-height: 1.625;
-      margin-bottom: 1.5rem;
-      font-weight: 500;
-    }
-
-    @media (min-width: 768px) {
-      .testimonial-quote {
-        font-size: 1.125rem;
-      }
-    }
-
-    @media (min-width: 1024px) {
-      .testimonial-quote {
-        font-size: 1.25rem;
-      }
-    }
-
-    .testimonial-author {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .testimonial-avatar-wrapper {
-      position: relative;
-    }
-
-    .testimonial-avatar {
-      width: 2.75rem;
-      height: 2.75rem;
-      border-radius: 0.75rem;
-      background: linear-gradient(to bottom right, rgba(59, 130, 246, 0.2), rgba(244, 63, 94, 0.2));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .testimonial-avatar-letter {
-      font-size: 1.125rem;
-      font-weight: 700;
-      background: linear-gradient(to bottom right, hsl(var(--primary)), hsl(var(--accent)));
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .testimonial-avatar-badge {
-      position: absolute;
-      bottom: -0.125rem;
-      right: -0.125rem;
-      width: 0.875rem;
-      height: 0.875rem;
-      background-color: hsl(var(--primary));
-      border-radius: 9999px;
-      border: 2px solid hsl(var(--background));
-    }
-
-    .testimonial-author-info {
-      /* Author info container */
-    }
-
-    .testimonial-author-name {
-      font-weight: 700;
-      font-size: 0.875rem;
-      color: hsl(var(--foreground));
-    }
-
-    .testimonial-author-title {
-      color: hsl(var(--muted-foreground));
-      font-size: 0.75rem;
-    }
-
-    .testimonial-author-company {
-      font-size: 0.75rem;
-      color: hsl(var(--primary));
-      font-weight: 500;
     }
 
     .testimonials-indicators {
@@ -422,6 +285,133 @@
     .testimonial-indicator.bg-foreground\/20 {
       background-color: rgba(34, 34, 34, 0.2);
     }
+
+    /* Testimonial Card Styling */
+    .testimonial-item > div {
+      background-color: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(8px);
+      border-radius: 1rem;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(229, 231, 235, 0.5);
+      padding: 1.5rem;
+      position: relative;
+    }
+
+    @media (min-width: 768px) {
+      .testimonial-item > div {
+        padding: 2.5rem;
+      }
+    }
+
+    /* Quote Icon */
+    .testimonial-item > div > div:first-child {
+      position: absolute;
+      top: -1rem;
+      left: 2rem;
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 0.75rem;
+      background: linear-gradient(to bottom right, hsl(var(--primary)), rgba(59, 130, 246, 0.7));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    @media (min-width: 768px) {
+      .testimonial-item > div > div:first-child {
+        left: 2.5rem;
+      }
+    }
+
+    .testimonial-item > div > div:first-child svg {
+      width: 1rem;
+      height: 1rem;
+      color: white;
+      fill: white;
+    }
+
+    /* Stars Container */
+    .testimonial-item div.flex.gap-0\.5 {
+      display: flex;
+      gap: 0.125rem;
+      margin-bottom: 1rem;
+      padding-top: 0.75rem;
+    }
+
+    .testimonial-item div.flex.gap-0\.5 svg {
+      width: 1rem;
+      height: 1rem;
+      fill: hsl(var(--primary));
+      color: hsl(var(--primary));
+    }
+
+    /* Quote Text */
+    .testimonial-item blockquote {
+      color: hsl(var(--foreground));
+      line-height: 1.625;
+      font-weight: 500;
+    }
+
+    /* Author Section */
+    .testimonial-item div.flex.items-center.gap-3 {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .testimonial-item div.relative div.w-11 {
+      position: relative;
+      width: 2.75rem;
+      height: 2.75rem;
+      border-radius: 0.75rem;
+      background: linear-gradient(to bottom right, rgba(59, 130, 246, 0.2), rgba(244, 63, 94, 0.2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .testimonial-item div.relative div.w-11 span {
+      font-size: 1.125rem;
+      font-weight: 700;
+      background: linear-gradient(to bottom right, hsl(var(--primary)), hsl(var(--accent)));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .testimonial-item div.absolute {
+      position: absolute;
+      bottom: -0.125rem;
+      right: -0.125rem;
+      width: 0.875rem;
+      height: 0.875rem;
+      background-color: hsl(var(--primary));
+      border-radius: 9999px;
+      border: 2px solid hsl(var(--background));
+    }
+
+    .testimonial-item div > div:last-child p {
+      margin: 0;
+    }
+
+    .testimonial-item div > div:last-child p:first-child {
+      font-weight: 700;
+      font-size: 0.875rem;
+      color: hsl(var(--foreground));
+    }
+
+    .testimonial-item div > div:last-child p:nth-child(2) {
+      color: hsl(var(--muted-foreground));
+      font-size: 0.75rem;
+    }
+
+    .testimonial-item div > div:last-child p:nth-child(3) {
+      font-size: 0.75rem;
+      color: hsl(var(--primary));
+      font-weight: 500;
+    }
+
   </style>
 
   <script>

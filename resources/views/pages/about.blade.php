@@ -8,7 +8,7 @@
 
 
         /* Hero Section */
-        .hero-section {
+        .about-hero-section {
             position: relative;
             padding-top: 8rem;
             padding-bottom: 6rem;
@@ -24,7 +24,6 @@
             line-height: 1.1;
             letter-spacing: -0.02em;
         }
-
 
 
         /* Buttons */
@@ -71,6 +70,7 @@
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             filter: blur(40px);
+            max-width: 80%;
         }
 
         .belief-link {
@@ -125,7 +125,7 @@
         .value-card-glow {
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, hsla(var(--primary), 0.2), hsla(var(--secondary), 0.2));
+            background:  linear-gradient(to bottom right, #2b4bee33, #8c3cdd33);
             border-radius: 1rem;
             opacity: 0;
             transition: opacity 0.5s ease;
@@ -140,14 +140,14 @@
             position: relative;
             height: 100%;
             background-color: hsl(var(--card));
-            border: 1px solid hsla(var(--border), 0.5);
+            border: 1px solid #e5e7eb60;
             border-radius: 1rem;
             padding: 2rem;
             transition: all 0.5s ease;
         }
 
         .value-card:hover .value-card-content {
-            border-color: hsla(var(--primary), 0.3);
+            border-color: #BFC9F9;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
             transform: translateY(-4px);
         }
@@ -177,7 +177,7 @@
             padding: 1rem;
             background-color: hsl(var(--card));
             border-radius: 0.75rem;
-            border: 1px solid hsla(var(--border), 0.5);
+            border: 1px solid #e5e7eb80;
         }
 
         .benefit-icon {
@@ -257,7 +257,7 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            .hero-section {
+            .about-hero-section {
                 padding-top: 6rem;
                 padding-bottom: 4rem;
             }
@@ -293,10 +293,10 @@
 
 @section('content')
     <!-- Hero Section -->
-    <section class="hero-section" style="background-image: url('{{ asset('assets/inner-page-header.png') }}')">
+    <section class="about-hero-section" style="background-image: url('{{ asset('assets/inner-page-header.png') }}')">
         <div class="container" style="position: relative; z-index: 10;">
             <div class="scroll-animate" style="max-width: 64rem; margin: 0 auto; text-align: center;">
-                <h1 class="hero-title font-display" style="color: white;">
+                <h1 class="hero-title font-display" style="color: white; width: 80%; margin: 0 auto;">
                     Built for Membership —
                     <span class="text-accent">Not Compromise</span>
                 </h1>
@@ -306,7 +306,7 @@
                     <span style="color: white; font-weight: 500;"> systems that work, but don't work together.</span>
                 </p>
                 <div
-                    style="display: flex; flex-direction: column; gap: 1rem; justify-content: center; align-items: center;">
+                    style="display: flex; gap: 1rem; justify-content: center; align-items: center;">
                     <a href="{{ route('request-demo') }}" class="btn-cta">
                         Request a Demo
                     </a>
@@ -342,10 +342,10 @@
                 </div>
 
                 <!-- Belief Statement -->
-                <div class="scroll-animate animate-delay-150">
+                <div class="scroll-animate animate-delay-150" style="width: 85%; margin: 0 auto;">
                     <div class="belief-box">
                         <div class="belief-box-glow"></div>
-                        <div style="display: flex; flex-direction: column; gap: 1.5rem; position: relative; z-index: 10;">
+                        <div style="display: flex; flex-direction: row; gap: 1.5rem; position: relative; z-index: 10; justify-content: space-between;">
                             <p class="font-display" style="font-size: 1.875rem; color: white; line-height: 1.2;">
                                 We believe associations deserve better.
                             </p>
@@ -365,7 +365,7 @@
     </section>
 
     <!-- Our Approach Section -->
-    <section style="padding: 7rem 0; background-color: hsla(var(--muted), 0.3); position: relative; overflow: hidden;">
+    <section style="padding: 7rem 0;  background-color: #f3f4f64d; position: relative; overflow: hidden;">
         <!-- Subtle pattern -->
         <div class="dot-pattern"></div>
 
@@ -381,9 +381,9 @@
 
                 <!-- Content Grid -->
                 <div
-                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 3rem; width: 83%; margin: 0 auto;">
                     <div class="scroll-animate animate-delay-100"
-                        style="padding: 2rem; border-radius: 1rem; background-color: hsl(var(--background)); border: 1px solid hsla(var(--border), 0.5); height: 100%;">
+                        style="padding: 2rem; border-radius: 1rem; background-color: hsl(var(--background)); border: 1px solid #e5e7eb80; height: 100%;">
                         <div
                             style="width: 3rem; height: 3rem; border-radius: 0.75rem; background: linear-gradient(135deg, hsla(var(--primary), 0.1), hsla(var(--secondary), 0.1)); display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
                             <svg class="lucide" fill="none" stroke="hsl(var(--primary))" viewBox="0 0 24 24">
@@ -401,7 +401,7 @@
                     </div>
 
                     <div class="scroll-animate animate-delay-200"
-                        style="padding: 2rem; border-radius: 1rem; background-color: hsl(var(--background)); border: 1px solid hsla(var(--border), 0.5); height: 100%;">
+                        style="padding: 2rem; border-radius: 1rem; background-color: hsl(var(--background)); border: 1px solid #e5e7eb80; height: 100%;">
                         <div
                             style="width: 3rem; height: 3rem; border-radius: 0.75rem; background: linear-gradient(135deg, hsla(var(--primary), 0.1), hsla(var(--secondary), 0.1)); display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
                             <svg class="lucide" fill="none" stroke="hsl(var(--primary))" viewBox="0 0 24 24">
@@ -421,12 +421,12 @@
                 </div>
 
                 <!-- Quote Block -->
-                <div class="scroll-animate animate-delay-300" style="text-center; margin: 0 auto;">
+                <div class="scroll-animate animate-delay-300" style="text-center; margin: 0 auto; width: 90%; padding: 3rem;">
                     <div
                         style="width: 4rem; height: 0.25rem; background-color: hsl(var(--primary)); border-radius: 9999px; margin: 0 auto 1.5rem;">
                     </div>
                     <p class="font-display"
-                        style="font-size: 1.5rem; color: hsl(var(--foreground)); font-style: italic; line-height: 1.75;">
+                        style="font-size: 1.5rem; color: hsl(var(--foreground)); font-style: italic; line-height: 1.75; text-align: center; font-weight: normal;">
                         The technology stays in the background. The experience feels continuous.
                     </p>
                 </div>
@@ -439,12 +439,12 @@
         <div class="container">
             <div class="scroll-animate" style="text-center; margin-bottom: 4rem;">
                 <h2 class="font-display"
-                    style="font-size: clamp(2rem, 4vw, 2.5rem); color: hsl(var(--foreground)); margin-bottom: 1rem;">
+                    style="font-size: 60px; line-height: 60px; color: hsl(var(--foreground)); margin-bottom: 1rem; text-align: center;">
                     What Guides Us
                 </h2>
             </div>
 
-            <div style="max-width: 80rem; margin: 0 auto;">
+            <div style="max-width: 65rem; margin: 0 auto;">
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
                     @php
                         $values = [
@@ -504,7 +504,7 @@
             <div style="max-width: 48rem; margin: 0 auto;">
                 <div class="scroll-animate">
                     <h2 class="font-display"
-                        style="font-size: clamp(2rem, 4vw, 2.5rem); color: hsl(var(--foreground)); margin-bottom: 2rem;">
+                        style="font-size: 60px; line-height: 60px; color: hsl(var(--foreground)); margin-bottom: 2rem;">
                         Why It Matters
                     </h2>
                 </div>
@@ -539,8 +539,8 @@
                     @foreach($benefits as $benefit)
                         <div class="scroll-animate" style="animation-delay: {{ $benefit['delay'] }}ms;">
                             <div class="benefit-item">
-                                <div class="benefit-icon">
-                                    <svg class="lucide-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <div class="benefit-icon" style="background: #10b77f1a">
+                                    <svg class="lucide-sm" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                                         {!! $benefit['icon'] !!}
                                     </svg>
                                 </div>
@@ -552,9 +552,9 @@
 
                 <div class="scroll-animate animate-delay-300">
                     <div
-                        style="background-color: hsla(var(--background), 0.8); backdrop-filter: blur(8px); border-radius: 1rem; padding: 2rem; border: 1px solid hsla(var(--border), 0.5);">
+                        style="background-color: #fffc; backdrop-filter: blur(8px); border-radius: 1rem; padding: 2rem 1rem; border: 1px solid #e5e7eb80;">
                         <p class="font-display"
-                            style="font-size: 1.25rem; color: hsl(var(--foreground)); text-align: center;">
+                            style="font-size: 20px; line-height: 28px; font-weight: normal; text-align: center;">
                             The best AMS is one members rarely think about — because it simply works.
                         </p>
                     </div>
@@ -566,10 +566,10 @@
     <!-- Built for What Comes Next -->
     <section style="padding: 6rem 0;">
         <div class="container">
-            <div style="max-width: 48rem; margin: 0 auto; text-align: center;">
+            <div style="max-width: 49rem; margin: 0 auto; text-align: center;">
                 <div class="scroll-animate">
                     <h2 class="font-display"
-                        style="font-size: clamp(2rem, 4vw, 2.5rem); color: hsl(var(--foreground)); margin-bottom: 2rem;">
+                        style="font-size: 60px; line-height: 60px; color: hsl(var(--foreground)); margin-bottom: 2rem;">
                         Built for What Comes Next
                     </h2>
                 </div>
@@ -610,12 +610,12 @@
                     style="color: rgba(255, 255, 255, 0.7); letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.875rem; margin-bottom: 1rem;">
                     Seamless
                 </p>
-                <h2 class="font-display" style="font-size: clamp(2rem, 4vw, 2.5rem); color: white; margin-bottom: 1.5rem;">
+                <h2 class="font-display" style="font-size: 60px; line-height: 60px; color: white; margin-bottom: 1.5rem;">
                     A modern, unified AMS platform built for now — and what's to come.
                 </h2>
 
                 <div
-                    style="display: flex; flex-direction: column; gap: 1rem; justify-content: center; margin-top: 2.5rem; align-items: center;">
+                    style="display: flex; flex-direction: row; gap: 1rem; justify-content: center; margin-top: 2.5rem; align-items: center;">
                     <a href="{{ route('request-demo') }}" class="btn-white">
                         Request a Demo
                         <svg class="lucide-sm arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
